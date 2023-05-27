@@ -1,0 +1,6 @@
+.env
+node_modules
+
+# remove on release
+package-lock.json
+yarn.lock

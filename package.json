@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "hopafiles",
+  "version": "0.0.0",
+  "author": "Frys",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
