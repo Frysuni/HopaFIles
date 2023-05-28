@@ -1,42 +1,26 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
-
-enum ApiErrorKeeper {
-  'Unresolved Error',
-  'ValidationPipe: Wrong DTO recived',
-  'AuthGuard: Need authorization',
-  'AuthGuard: Invalid JWT',
-  'AuthGuard: Member not found',
-  'AuthAvailable: Username or email is not specified',
-  'AuthRegister: Invalid email activation code. (Or email not the same)',
-  'AuthRegister: Invalid discord authorization token',
-  'AuthLogin: Invalid usernameOrEmail or password',
-  'AuthRefresh: Invalid refresh token',
-  'AuthSetTotp: Invalid 2fa key',
-  'AuthSetTotp: Invalid 2fa code',
-  'DiscordAuthCallbackHandler: Invalid state token',
-  'UsersCreate: Email/username/memberId conflict',
-  'AssetsService: Wrong skin/cape input',
-  'AssetsService: Unallowed HD skin/cape',
-}
+import { ApiErrors } from '@hopafiles/common';
 
 export class ApiException {
   public statusCode: number;
   public message: { code: number, description: string, errors?: string[] };
   constructor(
     statusCode: keyof typeof HttpStatus,
-    errorCode: keyof typeof ApiErrorKeeper,
+    errorCode: keyof typeof ApiErrors,
     validationErrors?: string[],
   ) {
     this.statusCode = HttpStatus[statusCode];
-    this.message = { code: ApiErrorKeeper[errorCode], description: errorCode };
+    this.message = { code: ApiErrors[errorCode], description: errorCode };
     if (validationErrors) this.message.errors = validationErrors;
   }
 }
 
 @Catch()
 export class ExceptionsFilter implements ExceptionFilter {
+  private readonly errorLogger = new Logger('ExceptionsFilter');
+
   catch(exception: HttpException | ApiException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<FastifyReply>();
@@ -66,6 +50,9 @@ export class ExceptionsFilter implements ExceptionFilter {
     if (
       !(exception instanceof  ApiException) &&
       !(exception instanceof HttpException)
-    ) console.log((exception as TypeError | Error).name);
+    ) {
+      const error = (exception as TypeError | Error);
+      this.errorLogger.error(`${error.name}\n${error.message}`, error.stack);
+    }
   }
 }

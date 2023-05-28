@@ -1,4 +1,4 @@
-import envConfig from "@env";
+import envConfig from "~/monorepo/envConfig";
 import { fastifyCookie, CookieSerializeOptions } from "@fastify/cookie";
 import fastifyCsrfProtection from "@fastify/csrf-protection";
 import fastifyHelmet from "@fastify/helmet";
