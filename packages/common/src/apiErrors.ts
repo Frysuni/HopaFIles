@@ -1,5 +1,6 @@
 export enum ApiErrors {
-  'Unresolved Error'
+  'Unresolved Error',
+  'ValidationPipe: Wrong DTO recived'
 }
 
 export default ApiErrors;

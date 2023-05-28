@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import envConfig from '~/monorepo/envConfig';
+import { envConfig } from '@hopafiles/common';
 import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
 import { ExceptionsFilter } from '@system/apiException';
 import appRegistrations from '@system/appRegistrations';
@@ -32,5 +32,5 @@ void async function bootstrap() {
   app.useGlobalPipes(validationPipe);
   app.setGlobalPrefix(envConfig.apiUrl.pathname);
 
-  return app.listen(envConfig.port, envConfig.apiUrl.hostname);
+  app.listen(envConfig.apiPort, envConfig.apiUrl.hostname);
 }();
