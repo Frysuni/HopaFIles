@@ -4,7 +4,7 @@ import { envConfig } from '@hopafiles/common';
 import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
 import { ExceptionsFilter } from '@system/apiException';
 import appRegistrations from '@system/appRegistrations';
-import validationPipe from '@system/validationPipe';
+// import validationPipe from '@system/validationPipe';
 import { resolve } from 'path';
 
 void async function bootstrap() {
@@ -29,7 +29,7 @@ void async function bootstrap() {
   app.enableShutdownHooks();
 
   app.useGlobalFilters(new ExceptionsFilter);
-  app.useGlobalPipes(validationPipe);
+  // app.useGlobalPipes(validationPipe);
   app.setGlobalPrefix(envConfig.apiUrl.pathname);
 
   app.listen(envConfig.apiPort, envConfig.apiUrl.hostname);

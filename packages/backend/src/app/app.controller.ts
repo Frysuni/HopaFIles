@@ -1,8 +1,5 @@
-import { All, Controller, HttpStatus, HttpCode, Get, Res, UnauthorizedException } from '@nestjs/common';
-import { ApiException } from '@system/apiException';
-import { Cookies, CookiesType, CookieType } from '@system/cookies.decorator';
-import { R } from '@system/response.decorator';
-import { FastifyReply } from 'fastify';
+import { All, Controller, HttpStatus, HttpCode } from '@nestjs/common';
+import { TypedRoute  } from '@nestia/core';
 
 @Controller()
 export class AppController {
@@ -12,12 +9,10 @@ export class AppController {
     return 'Не, через интерфейс будет проще, это я тебе как инженер говорю.';
   }
 
-  @Get('closed')
-  async closedMethod() {
-    return 'Ура победа';
-  }
-
-  @Get('ping')
+  /**
+   * hunay
+   */
+  @TypedRoute.Get('ping')
   ping() {
     return { status: true };
   }

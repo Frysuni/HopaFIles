@@ -25,13 +25,16 @@
     "baseUrl": "./",
     "skipLibCheck": true,
     "noImplicitOverride": true,
-    "strictNullChecks": true,
+    "strict": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "plugins": [
+      { "transform": "@nestia/core/lib/transform" },
+      { "transform": "typia/lib/transform" }
+    ],
     "paths": {
-      "@env": ["./src/system/envConfig"],
       "@system/*": ["./src/system/*"],
       "~/*": ["./src/*"]
     }
