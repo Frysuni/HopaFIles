@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppLoggerMiddleware } from './logger.service';
-import envConfig from '~/monorepo/envConfig';
+import { envConfig } from '@hopafiles/common';
 
 @Module({
   imports: [

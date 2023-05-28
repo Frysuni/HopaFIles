@@ -1,11 +1,5 @@
-# remove on release
-package-lock.json
-yarn.lock
-
 # any
-.env
-/test*.ts
-yarn.lock
+/test.ts
 
 # project output
 files
@@ -25,12 +19,10 @@ lerna-debug.log*
 # compiled output
 dist
 node_modules
-tmp
-out-tsc
-bazel-out
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Tests
 coverage
@@ -53,15 +45,3 @@ coverage
 !.vscode/extensions.json
 vscode-profile-*
 .history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-connect.lock
-libpeerconnection.log
-testem.log
-typings
-
-# System files
-.DS_Store
-Thumbs.db

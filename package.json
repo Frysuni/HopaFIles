@@ -8,9 +8,11 @@
     "packages/*"
   ],
   "scripts": {
-    "boot": "npm i -g lerna@^6.0.0 && lerna bootstrap"
+    "boot": "npm i -g lerna yarn && lerna bootstrap",
+    "build": "lerna run build",
+    "clean": "lerna clean --yes && yarn cache clean"
   },
-  "dependencies": {
+  "devDependencies": {
     "lerna": "^6.6.2"
   }
 }

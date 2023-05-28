@@ -1,17 +1,5 @@
-# remove on release
-package-lock.json
-yarn.lock
-
 # any
-.env
-/test*.ts
-yarn.lock
-
-# project output
-files
-logs
-.secrets
-discordUsers
+/test.ts
 
 # Logs
 /logs
@@ -28,9 +16,6 @@ node_modules
 tmp
 out-tsc
 bazel-out
-
-# OS
-.DS_Store
 
 # Tests
 coverage
