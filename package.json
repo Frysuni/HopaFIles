@@ -4,8 +4,13 @@
   "version": "0.0.0",
   "author": "Frys",
   "license": "UNLICENSED",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "boot": "npm i -g lerna@^6.0.0 && lerna bootstrap"
+  },
+  "dependencies": {
+    "lerna": "^6.6.2"
   }
 }
